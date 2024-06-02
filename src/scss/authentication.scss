@@ -4,9 +4,9 @@
 .auth {
   &_container {
     width: 100%;
-    min-height: calc(100vh - 80px);
+    height: 100%;
     margin: 0 auto;
-    padding: 120px 32px;
+    padding: 32px;
 
     display: flex;
     justify-content: center;
@@ -20,6 +20,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  &_icon {
+    display: none;
   }
 
   &_content {
@@ -49,6 +53,11 @@
       margin: 0 32px;
 
       border-radius: 6px;
+
+      @media (max-width: 768px) {
+        max-width: 100%; // Allow it to take the full width on mobile
+        margin: 0 16px; // Reduce margin for better spacing
+      }
     }
 
     &-input {
@@ -129,6 +138,55 @@
       background-color: $secondary-color;
       color: $secondary-foreground-color;
     }
+  }
+
+  @media (max-width: 901px) {
+    &_container {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &_banner {
+      display: none;
+    }
+
+    &_content {
+      width: 100%; // Adjust to take full width on smaller screens
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &_form {
+      &-container {
+        width: 70%;
+        margin: 0 50px;
+      }
+    }
+
+    &_icon {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      color: $primary-color;
+
+      img {
+        width: 30%;
+        height: 30%;
+      }
+    }
+  }
+}
+
+.btn {
+  &:hover {
+    cursor: pointer;
+    background-color: darken($secondary-color, 5%);
   }
 }
 

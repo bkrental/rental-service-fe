@@ -4,7 +4,7 @@ import { Button, Stack, styled, TextField } from "@mui/material";
 import { StringParam, useQueryParam } from "use-query-params";
 import PriceSelect from "./PriceSelect";
 import PropertyTypeSelect from "./PropertyTypeSelect";
-import "./SearchBar.scss";
+// import "./SearchBar.scss";
 import AreaSelect from "./AreaSelect";
 import AddressInput from "./AddressInput";
 
@@ -15,9 +15,17 @@ const SearchBarContainer = styled(Stack)(({ theme }) => ({
   flexDirection: "row",
   paddingBottom: theme.spacing(2),
   zIndex: 100,
+  // backgroundColor: "#fff",
   backgroundColor: "#fff",
   width: "100%",
   gap: theme.spacing(2),
+  display: {
+    xs: "none",
+    sm: "none",
+    md: "flex",
+    lg: "flex",
+    xl: "flex",
+  },
 }));
 
 export default function SearchBar() {
@@ -30,7 +38,15 @@ export default function SearchBar() {
   }
 
   return (
-    <SearchBarContainer>
+    <SearchBarContainer
+      sx={{
+        display: {
+          xs: "none",
+          sm: "none",
+          md: "flex",
+        },
+      }}
+    >
       <AddressInput />
 
       <PropertyTypeSelect />

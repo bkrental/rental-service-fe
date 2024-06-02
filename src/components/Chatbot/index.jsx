@@ -17,7 +17,7 @@ export default function ChatbotProvider({ children }) {
         <Fab
           onClick={() => dispatch(toggleChatWidget())}
           color="primary"
-          sx={{ position: "fixed", bottom: 16, right: 16 }}
+          sx={{ position: "fixed", bottom: 16, right: 16, display: { xs: "none", sm: "none", md: "unset" } }}
         >
           <ChatBubbleOutline />
         </Fab>

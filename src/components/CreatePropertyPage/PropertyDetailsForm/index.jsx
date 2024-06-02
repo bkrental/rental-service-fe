@@ -5,6 +5,7 @@ import {
   setBathrooms,
   setBedrooms,
   setIsStepCompleted,
+  setPrice,
   setPriceSuggestion,
 } from "@/redux/features/createPostSlice";
 import formatVietnamesePrice from "@/utils/formatPrice";
@@ -33,7 +34,6 @@ import SuccessDialog from "./SuccessDialog";
 export default function PropertyDetailsForm() {
   const router = useRouter();
   const dispatch = useDispatch();
-
   const priceSuggestion = useSelector((s) => s.createPost.priceSuggestion);
   const bedrooms = useSelector((s) => s.createPost.bedrooms);
   const bathrooms = useSelector((s) => s.createPost.bathrooms);
@@ -208,12 +208,6 @@ export default function PropertyDetailsForm() {
             aria-describedby="price-helper-text"
             value={price}
           />
-
-          {/* {createPostData.price != 0 && (
-            <FormHelperText color="primary" id="price-helper-text">
-              {" Giá: " + formatVietnamesePrice(createPostData.price).number + " " + pirceUnit}
-            </FormHelperText> */}
-          {/* )} */}
         </Tooltip>
       </Grid>
       <FullscreenLoading loading={loading} />

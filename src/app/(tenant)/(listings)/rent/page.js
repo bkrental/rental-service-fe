@@ -10,6 +10,7 @@ export default function RentPage() {
   return (
     <Suspense fallback={<FullscreenLoading loading={true} />}>
       <PropertiesPage transaction_type="rent" />;
+      {/* <MobilePropertiesPage transaction_type="rent" />; */}
     </Suspense>
   );
 }

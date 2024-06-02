@@ -76,7 +76,7 @@ const ChatWidget = () => {
   };
 
   return (
-    <ChatbotContainer>
+    <ChatbotContainer sx={{ display: { xs: "none", sm: "none", md: "unset" } }}>
       <Paper sx={{ p: 2, height: "70vh", display: "flex", flexDirection: "column" }}>
         <List sx={{ flexGrow: 1, overflowY: "auto" }}>
           {messages.map((message, index) => (

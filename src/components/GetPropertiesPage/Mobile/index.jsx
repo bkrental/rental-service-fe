@@ -2,7 +2,7 @@
 import Map from "@/components/GetPropertiesPage/components/Map";
 import useGetPropertyTypes from "@/hooks/useGetPropertyTypes";
 import { useGetPropertiesQuery } from "@/redux/features/properties/propertyApi";
-import { Box, styled, useMediaQuery, useTheme } from "@mui/material";
+import { Box, styled } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import { useSearchParams } from "next/navigation";
 import { useMemo } from "react";
@@ -21,13 +21,10 @@ const MapContainer = styled(Box)(({ theme }) => ({
   top: 116,
 }));
 
-export default function GetPropertiesPage({ transaction_type = "rent" }) {
+export default function MobileGetPropertiesPage({ transaction_type = "rent" }) {
   const pageSize = 10;
   const [currentPage, setCurrentPage] = useQueryParam("page", withDefault(NumberParam, 1));
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
-  const isMapOpened = useSelector((state) => state.system.isMapOpened);
   const handlePageChange = (event, page) => {
     setCurrentPage(page);
     // window.scrollTo({ top: 0 });
@@ -70,27 +67,23 @@ export default function GetPropertiesPage({ transaction_type = "rent" }) {
 
   return (
     <Grid container>
-      {(!isMobile || !isMapOpened) && (
-        <Grid xs={12} sm={6} md={7}>
-          {isLoading ? (
-            <FullscreenLoading loading={isLoading} />
-          ) : (
-            <PropertyList
-              properties={data?.properties}
-              totalPages={data?.pagination?.total_pages ?? 0}
-              currentPage={currentPage}
-              handlePageChange={handlePageChange}
-            />
-          )}
-        </Grid>
-      )}
-      {(!isMobile || isMapOpened) && (
-        <Grid xs={11} sm={6} md={5} sx={{ position: "relative" }}>
-          <MapContainer>
-            <Map center={center} markerList={propertyMarkers} />
-          </MapContainer>
-        </Grid>
-      )}
+      <Grid xs={12} sm={6} md={7}>
+        {isLoading ? (
+          <FullscreenLoading loading={isLoading} />
+        ) : (
+          <PropertyList
+            properties={data?.properties}
+            totalPages={data?.pagination?.total_pages ?? 0}
+            currentPage={currentPage}
+            handlePageChange={handlePageChange}
+          />
+        )}
+      </Grid>
+      <Grid xs={0} sm={6} md={5} sx={{ position: "relative" }}>
+        <MapContainer>
+          <Map center={center} markerList={propertyMarkers} />
+        </MapContainer>
+      </Grid>
     </Grid>
   );
 }

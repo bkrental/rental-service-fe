@@ -7,6 +7,7 @@ import { landlordApi } from "./features/landlord/api";
 import storage from "redux-persist/lib/storage";
 import { persistReducer, persistStore } from "redux-persist";
 import systemSlice from "./features/system/systemSlice";
+import filterSlice from "./features/filter/filterSlice";
 
 const persistConfig = {
   key: "root",
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
   auth: authSlice,
   createPost: createPostSlice,
   system: systemSlice,
+  filter: filterSlice,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

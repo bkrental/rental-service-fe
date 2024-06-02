@@ -59,9 +59,25 @@ export default function AddressInput() {
       options={suggestions}
       getOptionLabel={(option) => option.description}
       isOptionEqualToValue={(option, value) => option.place_id === value.place_id}
-      sx={{ width: 300 }}
+      sx={{
+        width: {
+          xs: 100,
+          sm: 100,
+          md: 300,
+        },
+        flex: {
+          xs: 1,
+          sm: 1,
+          md: "unset",
+        },
+      }}
       renderInput={(params) => (
-        <TextField {...params} variant="outlined" label="Search for city, neighborhood or location" />
+        <TextField
+          {...params}
+          // sx={{ flex: 1}}
+          variant="outlined"
+          label="Search for city, neighborhood or location"
+        />
       )}
     />
   );

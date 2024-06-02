@@ -33,7 +33,7 @@ export default function AreaSelect() {
   const [areaRange, setAreaRange] = useState([bottomArea, topArea]);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-  const areaConfig = { min: 0, max: 50000, step: 1 };
+  const areaConfig = { min: 0, max: 500, step: 1 };
 
   const theme = useTheme();
 
