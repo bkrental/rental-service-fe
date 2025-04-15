@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import { QueryParamProvider } from "use-query-params";
 import theme from "./theme";
 import { PersistGate } from "redux-persist/integration/react";
+import SocketProvider from "./socketio";
 
 export default function AppProviders({ children }) {
   return (

@@ -81,7 +81,7 @@ function Header() {
                 }}
                 onClick={handleClick}
               >
-                <Avatar sx={{ width: 30, height: 30 }}>{userName[0].toUpperCase()}</Avatar>
+                <Avatar src={user?.avatar} sx={{ width: 30, height: 30 }} />
                 <Typography>{userName}</Typography>
               </Stack>
             </>

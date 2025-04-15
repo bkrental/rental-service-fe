@@ -20,7 +20,35 @@ export const landlordApi = createApi({
         method: "DELETE",
       }),
     }),
+
+    getPreviewMessages: builder.query({
+      query: () => ({
+        url: "/messages/previews",
+        method: "GET",
+      }),
+    }),
+
+    getP2PMessages: builder.query({
+      query: ({ senderId, receiverId }) => ({
+        url: `/messages/${senderId}/${receiverId}`,
+        method: "GET",
+      }),
+    }),
+
+    sendP2PMessage: builder.mutation({
+      query: ({ receiverId, text }) => ({
+        url: `/messages`,
+        method: "POST",
+        body: { text, receiverId },
+      }),
+    }),
   }),
 });
 
-export const { useGetMyPropertiesQuery, useDeletePostMutation } = landlordApi;
+export const {
+  useLazyGetP2PMessagesQuery,
+  useGetMyPropertiesQuery,
+  useDeletePostMutation,
+  useGetPreviewMessagesQuery,
+  useSendP2PMessageMutation,
+} = landlordApi;

@@ -5,7 +5,6 @@ import { createTheme } from "@mui/material/styles";
 const theme = createTheme({
   palette: {
     primary: {
-      // main: "hsl(24.6, 95%, 53.1%)",
       main: orange[800],
       contrastText: "#fff",
     },
@@ -25,6 +24,15 @@ const theme = createTheme({
     h4: {
       fontWeight: 600,
       color: grey[900],
+    },
+  },
+  components: {
+    MuiListItemIcon: {
+      styleOverrides: {
+        root: {
+          minWidth: 36,
+        },
+      },
     },
   },
 });

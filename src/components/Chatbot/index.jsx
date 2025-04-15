@@ -5,10 +5,16 @@ import { Box, Collapse, Fab, Fade, Grow, Slide, Tooltip } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import ChatWidget from "./components/ChatWidget";
 import { toggleChatWidget } from "@/redux/features/system/systemSlice";
+import { usePathname } from "next/navigation";
 
 export default function ChatbotProvider({ children }) {
+  const pathname = usePathname();
   const dispatch = useDispatch();
   const isChatOpened = useSelector((s) => s.system.isChatOpened);
+
+  console.log("ChatbotProvider", pathname);
+
+  if (pathname === "/landlord/notifications") return children;
 
   return (
     <>
