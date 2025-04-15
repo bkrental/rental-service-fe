@@ -7,6 +7,7 @@ import SingleBedOutlinedIcon from "@mui/icons-material/SingleBedOutlined";
 import { Avatar, Box, Card, CardContent, CardHeader, Chip, Divider, IconButton, Typography } from "@mui/material";
 import CardMedia from "@mui/material/CardMedia";
 import { deepOrange, orange } from "@mui/material/colors";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { useSelector } from "react-redux";
@@ -67,7 +68,12 @@ export default function PropertyCard({
 
   return (
     <Card variant="outlined" sx={{ maxWidth: 390 }} key={_id}>
-      <CardMedia image={thumbnail} sx={{ width: "100%", height: 230, objectFit: "contain" }} title={name} />
+      <CardMedia sx={{ width: "100%", height: 230, objectFit: "contain" }}>
+        <div style={{ position: "relative", width: "100%", height: "100%" }}>
+          <Image alt={name} src={thumbnail} objectFit="cover" width={500} height={230} />
+        </div>
+      </CardMedia>
+      {/* <CardMedia image={thumbnail} sx={{ width: "100%", height: 230, objectFit: "contain" }} title={name} /> */}
       <CardContent>
         <Box display="flex" mb={1} gap={1}>
           <Chip size="small" icon={<GradeOutlined />} label="Tin mới" color="blue" />
